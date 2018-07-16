@@ -18,52 +18,72 @@ public class Node {
 	/**
 	 * 親のNodeを返す
 	 */
-	public abstract Optional<Node> getParent();
+	public Optional<Node> getParent() {
+	    return null;
+    }
 
 	/**
 	 * 子Node一覧を返す
 	 */
-	public abstract List<Node> getChildren();
+	public List<Node> getChildren() {
+        return null;
+    }
 
 	/**
 	 * Nodeの名前を返す
 	 */
-	public abstract String getName();
+	public String getName() {
+        return null;
+    }
 
 	/**
 	 * Nodeの深さを返す
 	 */
-	public abstract Integer getDepth();
+	public Integer getDepth() {
+        return null;
+    }
 
 	/**
 	 * 親Nodeを設定する
 	 */
-	public abstract void setParent(Node parent);
+	public void setParent(Node parent) {
+
+    }
 
 	/**
 	 * 子Nodeを追加する
 	 */
-	public abstract void addChild(Node child);
+	public void addChild(Node child) {
+
+    }
 
 	/**
 	 * xを設定する
 	 */
-	public abstract void setX(Integer x);
+	public void setX(Integer x) {
+
+    }
 
 	/**
 	 * xの値を返す
 	 */
-	public abstract Integer getX();
+	public Integer getX() {
+        return null;
+    }
 
 	/**
 	 * yを設定する
 	 */
-	public abstract void setY(Integer y);
+	public void setY(Integer y) {
+
+    }
 
 	/**
 	 * yの値を返す
 	 */
-	public abstract Integer getY();
+	public Integer getY() {
+        return null;
+    }
 
 	/**
 	 * このNodeがルートノードかを返す

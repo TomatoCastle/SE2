@@ -1,7 +1,11 @@
 package forest.view;
 
-import forest.Pane;
+import pane.PaneController;
+import pane.PaneModel;
+import pane.PaneView;
 
-public class TreesPane extends Pane {
-
+public class TreesPane extends PaneView {
+    public TreesPane(PaneModel paneModel, PaneController paneController) {
+        super(paneModel, paneController);
+    }
 }

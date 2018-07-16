@@ -3,8 +3,8 @@
 <project name="Forest" default="all" basedir=".">
 
 	<property name="package" value="forest" />
-	<property name="mvc" value="mvc" />
-	<property name="packagenames" value="${package},${mvc}" />
+	<property name="pane" value="pane" />
+	<property name="packagenames" value="${package},${pane}" />
 	<property name="destdir" value="./Classes" />
 	<property name="docdir" value="./JavaDoc" />
 	<property name="instdir" value="./${ant.project.name}.app/Contents/Resources/Java" />
@@ -33,7 +33,7 @@
 			<compilerarg value="-Xlint:all" />
 			<classpath>
 				<pathelement location="." />
-				<pathelement location="${mvc}.jar" />
+				<pathelement location="${pane}.jar" />
 			</classpath>
 		</javac>
 		<exec executable="date" spawn="false" />
@@ -44,7 +44,7 @@
 			jarfile="${package}.jar"
 			basedir="${destdir}"
 			manifest="${package}.mf">
-			<zipfileset src="${mvc}.jar" />
+			<zipfileset src="${pane}.jar" />
 		</jar>
 		<exec executable="date" spawn="false" />
 	</target>
@@ -114,7 +114,7 @@
 			<bottom>${copyright}</bottom>
 			<classpath>
 				<pathelement location="." />
-				<pathelement location="${mvc}.jar" />
+				<pathelement location="${pane}.jar" />
 			</classpath>
 		</javadoc>
 		<exec executable="open">

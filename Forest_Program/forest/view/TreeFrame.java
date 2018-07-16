@@ -1,6 +1,6 @@
 package forest.view;
 
-import forest.JFrame;
+import javax.swing.*;
 
 public class TreeFrame extends JFrame {
 

@@ -1,12 +1,18 @@
 package forest.view;
+import pane.PaneController;
+import pane.PaneModel;
+import pane.PaneView;
 
-import forest.Pane;
 import java.util.Optional;
 import forest.model.Tree;
 
-public class TreePane extends Pane {
+public class TreePane extends PaneView {
+    public TreePane(PaneModel paneModel, PaneController paneController, Optional<Tree> tree) {
+        super(paneModel, paneController);
+        this.tree = tree;
+    }
 
-	private Optional<Tree> tree;
+    private Optional<Tree> tree;
 
 	public void onTreeChanged() {
 
