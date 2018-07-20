@@ -38,25 +38,21 @@ public class Example extends Object
 			System.exit(1);
 		}
 
-		/**********
-
 		 // MVCを作成する。
-		ForestModel aModel = new ForestModel(aFile);
-		ForestView aView = new ForestView(aModel);
-
-		// ウィンドウを生成して開く。
-		JFrame aWindow = new JFrame(aFile.getName());
-		aWindow.getContentPane().add(aView);
-		aWindow.setMinimumSize(new Dimension(400, 300));
-		aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		aWindow.setSize(800, 600);
-		aWindow.setLocationRelativeTo(null);
-		aWindow.setVisible(true);
-
-		// 樹状整列のアニメーションを行う。
-		aModel.animate();
-
-		**********/
+//		ForestModel aModel = new ForestModel(aFile);
+//		ForestView aView = new ForestView(aModel);
+//
+//		// ウィンドウを生成して開く。
+//		JFrame aWindow = new JFrame(aFile.getName());
+//		aWindow.getContentPane().add(aView);
+//		aWindow.setMinimumSize(new Dimension(400, 300));
+//		aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		aWindow.setSize(800, 600);
+//		aWindow.setLocationRelativeTo(null);
+//		aWindow.setVisible(true);
+//
+//		// 樹状整列のアニメーションを行う。
+//		aModel.animate();
 
 		return;
 	}
