@@ -8,6 +8,7 @@ import utility.StringUtility;
 
 /**
  * テキストをパースしてNode一覧を取得するクラス
+ * @author USUI Kazuma
  */
 public class TreeParser extends Object {
 

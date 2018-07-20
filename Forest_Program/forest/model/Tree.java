@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 /**
  * 木構造を表すTreeクラス
  * Nodeクラスに依存する
+ * @author USUI Kazuma
  */
 public class Tree<Element extends Object & Comparable<? super Element>> extends Object {
 

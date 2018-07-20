@@ -9,6 +9,7 @@ import java.util.Optional;
 /**
  * Treeを表すためのNodeのクラス
  * 型引数にはObjectとComparableを実装したクラスを受け取ることができる
+ * @author USUI Kazuma
  */
 public class Node<Element extends Object & Comparable<? super Element>> extends Object implements Comparable<Node<Element>> {
 

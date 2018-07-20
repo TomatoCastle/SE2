@@ -5,6 +5,7 @@ import forest.view.TreePane;
 
 /**
  * ForestのModelを表すクラス
+ * @author USUI Kazuma
  */
 public class ForestModel extends Object {
 

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 /**
  * Nodeの持つデータを表すクラス
+ * @author USUI Kazuma
  */
 public class NodeData extends Object implements Comparable<NodeData> {
 
