@@ -1,31 +1,34 @@
 package forest.controller;
 
+import mvc.Controller;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class ForestController implements MouseListener {
-    @Override
-    public void mouseClicked(MouseEvent e) {
+/**
+ * ForestのControllerを表すクラス
+ */
+public class ForestController extends mvc.Controller, Controller {
 
-    }
+	/**
+	 * コンストラクタ
+	 */
+	public ForestController() {
 
-    @Override
-    public void mousePressed(MouseEvent e) {
+	}
 
-    }
+	/**
+	 * マウスのクリックイベントを取得し、処理する
+	 */
+	@Override
+	public void mouseClicked(MouseEvent aMouseEvent) {
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
+	}
 
-    }
+	/**
+	 * マウスのドラッグイベントを取得し、処理する
+	 */
+	@Override
+	public void mouseDragged(MouseEvent aMouseEvent) {
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
+	}
 
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 }

@@ -1,43 +1,37 @@
 package forest.model;
 
+import mvc.Model;
 import java.util.List;
-import forest.view.TreePane;
 
 /**
- * ForestのModelを表すクラス
+ *  ForestのModelを表すクラス
  * @author USUI Kazuma
  */
-public class ForestModel extends Object {
+public class ForestModel extends Object, mvc.Model, Model {
 
 	/**
-	 * Treeのインスタンスの配列を保持する
+	 * viewのリストを束縛する
 	 */
-	private List<Tree> trees;
+	protected List<ForestView> views;
 
 	/**
-	 * viewのインスタンスを保持する
+	 * Forestの木のリストを束縛する
 	 */
-	private List<TreePane> views;
+	private List<Tree<NodeData>> trees;
 
 	/**
-	 * modelの変更をviewに伝える
-	 */
-	public void notifyChangeToViews() {
-
-	}
-
-	/**
-	 * viewを追加する
-	 */
-	public void addView(TreePane treePane) {
-
-	}
-
-	/**
+	 * コンストラクタ
 	 * ファイルを読み込みTreeを作成する
 	 */
-	public void read(String fileName) {
+	public ForestModel(String fileName) {
 
+	}
+
+	/**
+	 * Forestの木のリストを返す
+	 */
+	public List<Tree<NodeData>> getTrees() {
+		return null;
 	}
 
 }
