@@ -3,6 +3,7 @@ package forest.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.io.File;
 
 import utility.StringUtility;
 
@@ -11,17 +12,16 @@ import utility.StringUtility;
  * @author USUI Kazuma
  */
 public class TreeParser extends Object {
-
 	/**
 	 * テキストをパースしてNode一覧を取得する
-	 * @param fileName ファイル名
+	 * @param aFile ファイル
 	 * @return ファイルから読み込んだNodeのリスト
 	 */
-	public List<Node<NodeData>> parseText(String fileName) {
+	public List<Node<NodeData>> parseText(File aFile) {
 		List<Node<NodeData>> aNodeList = new ArrayList<Node<NodeData>>();
 		Node<NodeData> aNode;
 
-		List<String> aStringList = StringUtility.readTextFromFile(fileName);
+		List<String> aStringList = StringUtility.readTextFromFile(aFile);
 		Iterator<String> anIterator = aStringList.iterator();
 		while (anIterator.hasNext()) {
 			String aString = anIterator.next();
@@ -56,6 +56,15 @@ public class TreeParser extends Object {
 		}
 
 		return aNodeList;
+	}
+
+	/**
+	 * テキストをパースしてNode一覧を取得する
+	 * @param fileName ファイル名
+	 * @return ファイルから読み込んだNodeのリスト
+	 */
+	public List<Node<NodeData>> parseText(String fileName) {
+		return this.parseText(new File(fileName));
 	}
 
 }

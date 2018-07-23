@@ -5,6 +5,13 @@ import java.awt.Point;
 import java.io.File;
 import javax.swing.JFrame;
 
+import forest.model.ForestModel;
+import forest.view.ForestView;
+import forest.controller.ForestController;
+
+import java.awt.image.BufferedImage;
+import java.awt.Dimension;
+
 /**
  * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。<br>
  * Makefileを用いた実行方法は以下の通りです。<br>
@@ -38,7 +45,29 @@ public class Example extends Object
 			System.exit(1);
 		}
 
-		 // MVCを作成する。
+		// MVCを作成する。
+		ForestModel aModel = new ForestModel("resource/data/tree.txt");
+		// aModel.picture(aImage);
+		ForestView aView = new ForestView(aModel, new ForestController());
+
+		JFrame aWindow = new JFrame("Forest");
+		aWindow.getContentPane().add(aView);
+		Dimension aDimension = new Dimension(800, 600);
+		aWindow.setMinimumSize(aDimension);
+		aWindow.setMaximumSize(aDimension);
+		aWindow.setResizable(false);
+		aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		aWindow.addNotify();
+		int titleBarHeight = aWindow.getInsets().top;
+		aWindow.setSize(aDimension.width, aDimension.height + titleBarHeight);
+		aWindow.setLocation(50, 50);
+		aWindow.setVisible(true);
+		aWindow.toFront();
+
+		// Example.write(anImage);
+		// displayPoint = new Point(displayPoint.x + offsetPoint.x, displayPoint.y + offsetPoint.y);
+
+
 //		ForestModel aModel = new ForestModel(aFile);
 //		ForestView aView = new ForestView(aModel);
 //

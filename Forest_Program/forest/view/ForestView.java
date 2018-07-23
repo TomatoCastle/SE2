@@ -1,41 +1,42 @@
 package forest.view;
 
-import mvc.View;
-import forest.model.ForestModel;
-import forest.controller.ForestController;
 import java.util.Map;
 import java.awt.Graphics;
+import java.awt.Point;
+
+import mvc.View;
+
+import forest.model.ForestModel;
+import forest.controller.ForestController;
 
 /**
  * ForestのViewを表すクラス
+ * @author USUI Kazuma
  */
-public class ForestView extends mvc.View, View {
-
-	/**
-	 * モデルを束縛する
-	 */
-	private ForestModel model;
-
-	/**
-	 * コントローラを束縛する
-	 */
-	private ForestController controller;
-
+@SuppressWarnings("serial")
+public class ForestView extends View {
 	/**
 	 * ノードの名前と座標を紐付けたMapを束縛する
 	 */
 	private Map<String,Point> nodePoints;
 
-	public void ForestView(ForestModel model, ForestController controller) {
-
+	/**
+	 * コンストラクタ
+	 * モデルとコントローラを設定する。
+	 * @param model モデルのインスタンス
+	 * @param controller コントローラのインスタンス
+	 */
+	public ForestView(ForestModel model, ForestController controller) {
+		super(model, controller);
 	}
 
 	/**
-	 * 画像の入力を得て出力する
+	 * 指定されたグラフィックにForestの画像を出力する
+	 * @param aGraphics グラフィックス・コンテキスト
 	 */
 	@Override
 	public void paintComponent(Graphics aGraphics) {
-
+		super.paintComponent(aGraphics);
 	}
 
 }

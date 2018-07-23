@@ -169,12 +169,13 @@ public class Node<Element extends Object & Comparable<? super Element>> extends 
 	 */
 	@Override
 	public boolean equals(Object object) {
-		if (this == object)
+		if (this == object) {
 			return true;
-		if (!(object instanceof Node))
-			return false;
-			Node otherNode = (Node) object;
-		return this.hashCode() == otherNode.hashCode();
+		}
+		if (object instanceof Node<?>) {
+			return this.hashCode() == object.hashCode();
+		}
+		return false;
 	}
 
 	/**

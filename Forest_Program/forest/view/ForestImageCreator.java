@@ -1,8 +1,12 @@
 package forest.view;
 
 import java.util.List;
-import java.awt.BufferedImage;
 import java.util.Map;
+import java.awt.Point;
+import java.awt.image.BufferedImage;
+
+import forest.model.Tree;
+import forest.model.NodeData;
 
 /**
  * ForestModelのtreesの内容からForestの画像を生成するクラス

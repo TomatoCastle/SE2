@@ -74,12 +74,13 @@ public class NodeData extends Object implements Comparable<NodeData> {
 	 */
 	@Override
 	public boolean equals(Object object) {
-		if (this == object)
+		if (this == object) {
 			return true;
-		if (!(object instanceof NodeData))
-			return false;
-			NodeData otherNodeData = (NodeData) object;
-		return this.hashCode() == otherNodeData.hashCode();
+		}
+		if (object instanceof NodeData) {
+			return this.hashCode() == object.hashCode();
+		}
+		return false;
 	}
 
 	/**

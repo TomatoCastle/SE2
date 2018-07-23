@@ -1,18 +1,19 @@
 package forest.controller;
 
-import mvc.Controller;
 import java.awt.event.MouseEvent;
+
+import mvc.Controller;
 
 /**
  * ForestのControllerを表すクラス
+ * @author USUI Kazuma
  */
-public class ForestController extends mvc.Controller, Controller {
-
+public class ForestController extends Controller {
 	/**
 	 * コンストラクタ
 	 */
 	public ForestController() {
-
+		super();
 	}
 
 	/**
@@ -20,7 +21,7 @@ public class ForestController extends mvc.Controller, Controller {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent aMouseEvent) {
-
+		super.mouseClicked(aMouseEvent);
 	}
 
 	/**
@@ -28,7 +29,7 @@ public class ForestController extends mvc.Controller, Controller {
 	 */
 	@Override
 	public void mouseDragged(MouseEvent aMouseEvent) {
-
+		super.mouseDragged(aMouseEvent);
 	}
 
 }
