@@ -9,7 +9,7 @@ import java.io.File;
  * @author TomatoCastle
  * Created by Tomato on 2018/07/21.
  */
-public class FileSelector extends Object {
+public class FileSelector extends Object{
 
     /**
      * ファイル選択するためのオブジェクトを束縛するフィールド。
@@ -45,7 +45,7 @@ public class FileSelector extends Object {
     public File selectFile(FileNameExtensionFilter filter){
         this.aFileChoser.setFileFilter(filter);
         int returnVal = aFileChoser.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION){
+        if(returnVal == JFileChooser.APPROVE_OPTION){
             return aFileChoser.getSelectedFile();
         }else{
             return null;
@@ -60,7 +60,7 @@ public class FileSelector extends Object {
     public String selectFileName(){
 
         File selcetdFile = this.selectFile();
-        if (selcetdFile != null){
+        if(selcetdFile != null){
             return selcetdFile.getName();
         }
         else{
@@ -75,7 +75,7 @@ public class FileSelector extends Object {
 
     public String selectFileName(FileNameExtensionFilter filter){
         File selcetdFile = this.selectFile(filter);
-        if (selcetdFile != null){
+        if(selcetdFile != null){
             return selcetdFile.getName();
         }
         else{
