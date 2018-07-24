@@ -58,7 +58,6 @@ public class FileSelector extends Object{
      */
 
     public String selectFileName(){
-
         File selcetdFile = this.selectFile();
         if(selcetdFile != null){
             return selcetdFile.getName();
