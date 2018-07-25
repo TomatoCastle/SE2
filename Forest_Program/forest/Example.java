@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import forest.model.ForestModel;
 import forest.view.ForestView;
+import forest.view.FileSelector;
 import forest.controller.ForestController;
 
 import java.awt.image.BufferedImage;
@@ -30,15 +31,19 @@ public class Example extends Object
 	 */
 	public static void main(String[] arguments)
 	{
+		File aFile;
 		// 引数が無い（樹状整列データファイルの在り処がわからない）をチェックする。
 		if (arguments.length < 1)
 		{
-			System.err.println("There are too few arguments.");
-			System.exit(1);
+			System.err.println("You need to select a file.");
+			FileSelector aFileSelector = new FileSelector();
+			aFile = aFileSelector.selectFile();
+			// System.exit(1);
+		} else {
+			aFile = new File(arguments[0]);
 		}
 
-		// 第1引数で指定された樹状整列データファイルの存在をチェックする。
-		File aFile = new File(arguments[0]);
+		// 指定された樹状整列データファイルの存在をチェックする。
 		if (!(aFile.exists()))
 		{
 			System.err.println("'" + aFile + "' does not exist.");
@@ -46,7 +51,7 @@ public class Example extends Object
 		}
 
 		// MVCを作成する。
-		ForestModel aModel = new ForestModel("resource/data/tree.txt");
+		ForestModel aModel = new ForestModel(aFile);
 		ForestController aController = new ForestController();
 		aController.setModel(aModel);
 		ForestView aView = new ForestView(aModel, aController);
@@ -65,25 +70,6 @@ public class Example extends Object
 		aWindow.setVisible(true);
 		aWindow.toFront();
 		aModel.animate();
-
-		// Example.write(anImage);
-		// displayPoint = new Point(displayPoint.x + offsetPoint.x, displayPoint.y + offsetPoint.y);
-
-
-//		ForestModel aModel = new ForestModel(aFile);
-//		ForestView aView = new ForestView(aModel);
-//
-//		// ウィンドウを生成して開く。
-//		JFrame aWindow = new JFrame(aFile.getName());
-//		aWindow.getContentPane().add(aView);
-//		aWindow.setMinimumSize(new Dimension(400, 300));
-//		aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		aWindow.setSize(800, 600);
-//		aWindow.setLocationRelativeTo(null);
-//		aWindow.setVisible(true);
-//
-//		// 樹状整列のアニメーションを行う。
-//		aModel.animate();
 
 		return;
 	}
