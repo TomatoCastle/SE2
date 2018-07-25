@@ -12,24 +12,13 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 
-import forest.model.Tree;
-import forest.model.Node;
-import forest.model.NodeData;
+import forest.Const;
 
 /**
  * ForestModelのtreesの内容からForestの画像を生成するクラス<br>
  * treesのnodesは深さ優先探索後順でソートされていることを前提としている。
  */
 public class ForestImageCreator {
-	final Integer width = 800;
-	final Integer height = 600;
-	final Integer contentMargin = 25;
-	final Integer nodeMarginLeft = 25;
-	final Integer nodeMarginTop = 2;
-	final Integer padding = 2;
-	final Integer fontSize = 12;
-	final String fontType = "Times New Roman";
-
 	/**
 	 * 木たちを束縛する
 	 */
@@ -67,12 +56,12 @@ public class ForestImageCreator {
 	/**
 	 * 画像の幅を束縛する
 	 */
-	private Integer imageWidth = width;
+	private Integer imageWidth = Const.WINDOW_WIDTH;
 
 	/**
 	 * 画像の高さを束縛する
 	 */
-	private Integer imageHeight = height;
+	private Integer imageHeight = Const.WINDOW_HEIGHT;
 
 	/**
 	 * 画像で現在整列済みの葉の数を束縛する
@@ -93,9 +82,9 @@ public class ForestImageCreator {
 	 * また、aCalculatedNodePointsに計算後のノードの位置を束縛しておく。
 	 */
 	public void initialize() {
-		this.aImage = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_BINARY);
+		this.aImage = new BufferedImage(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT, BufferedImage.TYPE_BYTE_BINARY);
 		Graphics2D aGraphics = this.aImage.createGraphics();
-		Font aFont = new Font(fontType, Font.PLAIN, fontSize);
+		Font aFont = new Font(Const.FONT_TYPE, Font.PLAIN, Const.FONT_SIZE);
 		aGraphics.setFont(aFont);
 		FontMetrics aFontMetrics = aGraphics.getFontMetrics();
 
@@ -113,10 +102,10 @@ public class ForestImageCreator {
 			while (aNodeListIterator.hasNext()) {
 				Node<NodeData> aNode = aNodeListIterator.next();
 				String aString = aNode.getData().get().getName();
-				Integer stringWidth = aFontMetrics.stringWidth(aString) + padding * 2;
+				Integer stringWidth = aFontMetrics.stringWidth(aString) + Const.NODE_PADDING * 2;
 				Integer stringHeight = aFontMetrics.getHeight();
 				List<Point> aPointList = new ArrayList<Point>();
-				Point startPoint = new Point(0, (aFontMetrics.getHeight() + nodeMarginTop) * count + nodeMarginTop + contentMargin);
+				Point startPoint = new Point(0, (aFontMetrics.getHeight() + Const.NODE_MARGIN_TOP) * count + Const.NODE_MARGIN_TOP + Const.CONTENT_MARGIN);
 				Point endPoint = new Point((int)startPoint.getX() + stringWidth, (int)startPoint.getY() + stringHeight);
 				aPointList.add(startPoint);
 				aPointList.add(endPoint);
@@ -171,19 +160,19 @@ public class ForestImageCreator {
 			}
 		}
 
-		this.imageWidth = width;
-		this.imageHeight = height;
+		this.imageWidth = Const.WINDOW_WIDTH;
+		this.imageHeight = Const.WINDOW_HEIGHT;
 		this.nodePoints.forEach((key, value) -> {
 			Point endPoint = value.get(1);
-			this.imageWidth = (this.imageWidth < (int)endPoint.getX() + contentMargin) ? (int)endPoint.getX() + contentMargin : this.imageWidth;
-			this.imageHeight = (this.imageHeight < (int)endPoint.getY() + contentMargin) ? (int)endPoint.getY() + contentMargin : this.imageHeight;	
+			this.imageWidth = (this.imageWidth < (int)endPoint.getX() + Const.CONTENT_MARGIN) ? (int)endPoint.getX() + Const.CONTENT_MARGIN : this.imageWidth;
+			this.imageHeight = (this.imageHeight < (int)endPoint.getY() + Const.CONTENT_MARGIN) ? (int)endPoint.getY() + Const.CONTENT_MARGIN : this.imageHeight;	
 		});
 
 		// 画像の生成
 		this.aImage = new BufferedImage(this.imageWidth, this.imageHeight, BufferedImage.TYPE_BYTE_BINARY);
 		if (this.trees != null) {
 			Graphics2D aGraphics = aImage.createGraphics();
-			Font aFont = new Font(fontType, Font.PLAIN, fontSize);
+			Font aFont = new Font(Const.FONT_TYPE, Font.PLAIN, Const.FONT_SIZE);
 			aGraphics.setFont(aFont);
 			FontMetrics aFontMetrics = aGraphics.getFontMetrics();
 			aGraphics.setColor(Color.WHITE);
@@ -222,12 +211,12 @@ public class ForestImageCreator {
 	private void calculateNodePoint(FontMetrics aFontMetrics, Node<NodeData> aNode, Point aPoint) {
 		List<Point> aCalculatedPointList = new ArrayList<Point>();
 		String aString = aNode.getData().get().getName();
-		Integer stringWidth = aFontMetrics.stringWidth(aString) + padding * 2;
+		Integer stringWidth = aFontMetrics.stringWidth(aString) + Const.NODE_PADDING * 2;
 		Integer stringHeight = aFontMetrics.getHeight();
-		Point calculatedStartPoint = new Point((int)aPoint.getX() + nodeMarginLeft, 0);
+		Point calculatedStartPoint = new Point((int)aPoint.getX() + Const.NODE_MARGIN_LEFT, 0);
 		Point calculatedEndPoint = new Point((int)calculatedStartPoint.getX() + stringWidth, 0);
 		if (aNode.isLeaf()) {
-			calculatedStartPoint.setLocation((int)calculatedStartPoint.getX(), (stringHeight + nodeMarginTop) * this.leafCount + nodeMarginTop + contentMargin);
+			calculatedStartPoint.setLocation((int)calculatedStartPoint.getX(), (stringHeight + Const.NODE_MARGIN_TOP) * this.leafCount + Const.NODE_MARGIN_TOP + Const.CONTENT_MARGIN);
 			calculatedEndPoint.setLocation((int)calculatedEndPoint.getX(), (int)calculatedStartPoint.getY() + stringHeight);
 			this.leafCount++;
 		} else {
@@ -262,7 +251,7 @@ public class ForestImageCreator {
 		Point startPoint = this.nodePoints.get(aNode).get(0);
 		Point endPoint = this.nodePoints.get(aNode).get(1);
 		Point endCenterPoint = new Point((int)endPoint.getX(), (int)endPoint.getY() - aFontMetrics.getHeight() / 2);
-		aGraphics.drawString(aString, (int)startPoint.getX() + padding, (int)startPoint.getY() + aFontMetrics.getHeight() - aFontMetrics.getDescent());
+		aGraphics.drawString(aString, (int)startPoint.getX() + Const.NODE_PADDING, (int)startPoint.getY() + aFontMetrics.getHeight() - aFontMetrics.getDescent());
 		aGraphics.drawRect((int)startPoint.getX(), (int)startPoint.getY(), (int)endPoint.getX() - (int)startPoint.getX(), (int)endPoint.getY() - (int)startPoint.getY());
 		if (!aNode.isLeaf()) {
 			aNode.getChildren().forEach((child) -> {

@@ -58,7 +58,7 @@ public class Example extends Object
 
 		JFrame aWindow = new JFrame("Forest");
 		aWindow.getContentPane().add(aView);
-		Dimension aDimension = new Dimension(800, 600);
+		Dimension aDimension = new Dimension(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
 		aWindow.setMinimumSize(aDimension);
 		aWindow.setMaximumSize(aDimension);
 		aWindow.setResizable(false);
