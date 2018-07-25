@@ -1,13 +1,10 @@
-package forest.view;
+package forest.mvc;
 
 import java.util.Map;
 import java.awt.Graphics;
 import java.awt.Point;
 
 import mvc.View;
-
-import forest.model.ForestModel;
-import forest.controller.ForestController;
 
 /**
  * ForestのViewを表すクラス
@@ -23,15 +20,6 @@ public class ForestView extends View {
 	 */
 	public ForestView(ForestModel model, ForestController controller) {
 		super(model, controller);
-	}
-
-	/**
-	 * 指定されたグラフィックにForestの画像を出力する
-	 * @param aGraphics グラフィックス・コンテキスト
-	 */
-	@Override
-	public void paintComponent(Graphics aGraphics) {
-		super.paintComponent(aGraphics);
 	}
 
 }

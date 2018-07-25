@@ -1,4 +1,4 @@
-package forest.model;
+package forest.mvc;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,12 @@ import java.io.File;
 
 import mvc.Model;
 
-import forest.view.ForestImageCreator;
+import forest.Const;
+import forest.utility.ForestImageCreator;
+import forest.utility.TreeParser;
+import forest.tree.Tree;
+import forest.tree.Node;
+import forest.tree.NodeData;
 
 /**
  * ForestのModelを表すクラス
@@ -26,9 +31,10 @@ public class ForestModel extends Model {
 	 */
 	private Map<Node<NodeData>,List<Point>> nodePoints;
 
-	ForestImageCreator aForestImageCreator;
-
-	final Integer sleepTime = 100;
+	/**
+	 * 画像を生成するためのForestImageCreatorのインスタンスを束縛する
+	 */
+	private ForestImageCreator aForestImageCreator;
 
 	/**
 	 * コンストラクタ
@@ -113,7 +119,7 @@ public class ForestModel extends Model {
 				this.picture(this.aForestImageCreator.next());
 				this.nodePoints = this.aForestImageCreator.getNodePoints();
 				this.changed();
-				Thread.sleep(sleepTime);
+				Thread.sleep(Const.SLEEP_TIME);
 			} catch (InterruptedException anException) {
 				System.err.println(anException);
 				throw new RuntimeException(anException.toString());

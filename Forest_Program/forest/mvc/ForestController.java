@@ -1,12 +1,9 @@
-package forest.controller;
+package forest.mvc;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 import mvc.Controller;
-
-import forest.model.ForestModel;
-import forest.view.ForestView;
 
 /**
  * ForestのControllerを表すクラス
@@ -29,14 +26,6 @@ public class ForestController extends Controller {
 		aPoint.translate(view.scrollAmount().x, view.scrollAmount().y);
 		String nodeName = ((ForestModel)this.model).getNodeName(aPoint);
 		System.out.println(String.format("%s (%s)", aPoint, nodeName));
-	}
-
-	/**
-	 * マウスのドラッグイベントを取得し、処理する
-	 */
-	@Override
-	public void mouseDragged(MouseEvent aMouseEvent) {
-		super.mouseDragged(aMouseEvent);
 	}
 
 }
