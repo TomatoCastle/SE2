@@ -21,6 +21,15 @@ import forest.model.NodeData;
  * treesのnodesは深さ優先探索後順でソートされていることを前提としている。
  */
 public class ForestImageCreator {
+	final Integer width = 800;
+	final Integer height = 600;
+	final Integer contentMargin = 25;
+	final Integer nodeMarginLeft = 25;
+	final Integer nodeMarginTop = 2;
+	final Integer padding = 2;
+	final Integer fontSize = 12;
+	final String fontType = "Times New Roman";
+
 	/**
 	 * 木たちを束縛する
 	 */
@@ -58,26 +67,17 @@ public class ForestImageCreator {
 	/**
 	 * 画像の幅を束縛する
 	 */
-	private Integer imageWidth = 0;
+	private Integer imageWidth = width;
 
 	/**
 	 * 画像の高さを束縛する
 	 */
-	private Integer imageHeight = 0;
+	private Integer imageHeight = height;
 
 	/**
 	 * 画像で現在整列済みの葉の数を束縛する
 	 */
 	private Integer leafCount = 0;
-
-	final Integer width = 800;
-	final Integer height = 600;
-	final Integer contentMargin = 25;
-	final Integer nodeMarginLeft = 25;
-	final Integer nodeMarginTop = 2;
-	final Integer padding = 2;
-	final Integer fontSize = 12;
-	final String fontType = "Times New Roman";
 
 	/**
 	 * treesを設定する
@@ -171,6 +171,14 @@ public class ForestImageCreator {
 			}
 		}
 
+		this.imageWidth = width;
+		this.imageHeight = height;
+		this.nodePoints.forEach((key, value) -> {
+			Point endPoint = value.get(1);
+			this.imageWidth = (this.imageWidth < (int)endPoint.getX() + contentMargin) ? (int)endPoint.getX() + contentMargin : this.imageWidth;
+			this.imageHeight = (this.imageHeight < (int)endPoint.getY() + contentMargin) ? (int)endPoint.getY() + contentMargin : this.imageHeight;	
+		});
+
 		// 画像の生成
 		this.aImage = new BufferedImage(this.imageWidth, this.imageHeight, BufferedImage.TYPE_BYTE_BINARY);
 		if (this.trees != null) {
@@ -241,8 +249,6 @@ public class ForestImageCreator {
 		if (!this.calculatedNodePoints.containsKey(aNode)) {
 			this.calculatedNodePoints.put(aNode, aCalculatedPointList);
 		}
-		this.imageWidth = (this.imageWidth < (int)calculatedEndPoint.getX() + contentMargin) ? (int)calculatedEndPoint.getX() + contentMargin : this.imageWidth;
-		this.imageHeight = (this.imageHeight < (int)calculatedEndPoint.getY() + contentMargin) ? (int)calculatedEndPoint.getY() + contentMargin : this.imageHeight;
 	}
 
 	/**
