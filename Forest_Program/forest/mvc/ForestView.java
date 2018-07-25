@@ -1,13 +1,10 @@
-package forest.view;
+package forest.mvc;
 
 import java.util.Map;
 import java.awt.Graphics;
 import java.awt.Point;
 
 import mvc.View;
-
-import forest.model.ForestModel;
-import forest.controller.ForestController;
 
 /**
  * ForestのViewを表すクラス

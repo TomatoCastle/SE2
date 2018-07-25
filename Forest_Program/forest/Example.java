@@ -1,17 +1,16 @@
 package forest;
 
+import java.io.File;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.io.File;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
-import forest.model.ForestModel;
-import forest.view.ForestView;
-import forest.view.FileSelector;
-import forest.controller.ForestController;
-
-import java.awt.image.BufferedImage;
-import java.awt.Dimension;
+import forest.mvc.ForestModel;
+import forest.mvc.ForestView;
+import forest.mvc.ForestController;
+import forest.utility.FileSelector;
 
 /**
  * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。<br>

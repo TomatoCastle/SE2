@@ -1,4 +1,4 @@
-package forest.model;
+package forest.mvc;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +10,11 @@ import java.io.File;
 import mvc.Model;
 
 import forest.Const;
-import forest.view.ForestImageCreator;
+import forest.utility.ForestImageCreator;
+import forest.utility.TreeParser;
+import forest.tree.Tree;
+import forest.tree.Node;
+import forest.tree.NodeData;
 
 /**
  * ForestのModelを表すクラス

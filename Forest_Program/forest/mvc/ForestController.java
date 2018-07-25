@@ -1,12 +1,9 @@
-package forest.controller;
+package forest.mvc;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 import mvc.Controller;
-
-import forest.model.ForestModel;
-import forest.view.ForestView;
 
 /**
  * ForestのControllerを表すクラス

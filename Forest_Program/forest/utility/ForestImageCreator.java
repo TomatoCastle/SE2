@@ -1,4 +1,4 @@
-package forest.view;
+package forest.utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +14,14 @@ import java.awt.image.BufferedImage;
 
 import forest.Const;
 
+import forest.tree.Tree;
+import forest.tree.Node;
+import forest.tree.NodeData;
+
 /**
  * ForestModelのtreesの内容からForestの画像を生成するクラス<br>
  * treesのnodesは深さ優先探索後順でソートされていることを前提としている。
+ * @author USUI Kazuma
  */
 public class ForestImageCreator {
 	/**
