@@ -16,11 +16,6 @@ import forest.controller.ForestController;
 @SuppressWarnings("serial")
 public class ForestView extends View {
 	/**
-	 * ノードの名前と座標を紐付けたMapを束縛する
-	 */
-	private Map<String,Point> nodePoints;
-
-	/**
 	 * コンストラクタ
 	 * モデルとコントローラを設定する。
 	 * @param model モデルのインスタンス

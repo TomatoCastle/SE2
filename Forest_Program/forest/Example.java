@@ -47,8 +47,9 @@ public class Example extends Object
 
 		// MVCを作成する。
 		ForestModel aModel = new ForestModel("resource/data/tree.txt");
-		// aModel.picture(aImage);
-		ForestView aView = new ForestView(aModel, new ForestController());
+		ForestController aController = new ForestController();
+		aController.setModel(aModel);
+		ForestView aView = new ForestView(aModel, aController);
 
 		JFrame aWindow = new JFrame("Forest");
 		aWindow.getContentPane().add(aView);
@@ -58,11 +59,12 @@ public class Example extends Object
 		aWindow.setResizable(false);
 		aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		aWindow.addNotify();
-		int titleBarHeight = aWindow.getInsets().top;
+		Integer titleBarHeight = aWindow.getInsets().top;
 		aWindow.setSize(aDimension.width, aDimension.height + titleBarHeight);
 		aWindow.setLocation(50, 50);
 		aWindow.setVisible(true);
 		aWindow.toFront();
+		aModel.animate();
 
 		// Example.write(anImage);
 		// displayPoint = new Point(displayPoint.x + offsetPoint.x, displayPoint.y + offsetPoint.y);

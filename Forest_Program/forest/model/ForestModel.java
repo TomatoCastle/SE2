@@ -1,10 +1,15 @@
 package forest.model;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.awt.Point;
 import java.io.File;
 
 import mvc.Model;
+
+import forest.view.ForestImageCreator;
 
 /**
  * ForestのModelを表すクラス
@@ -15,6 +20,15 @@ public class ForestModel extends Model {
 	 * Forestの木のリストを束縛する
 	 */
 	private List<Tree<NodeData>> trees = new ArrayList<Tree<NodeData>>();
+
+	/**
+	 * ノードの名前と座標を紐付けたMapを束縛する
+	 */
+	private Map<Node<NodeData>,List<Point>> nodePoints;
+
+	ForestImageCreator aForestImageCreator;
+
+	final Integer sleepTime = 100;
 
 	/**
 	 * コンストラクタ
@@ -29,9 +43,13 @@ public class ForestModel extends Model {
 		aNodeList.forEach((aNode) -> {
 			if (aNode.isRoot()) {
 				Tree<NodeData> aTree = new Tree<NodeData>(aNode);
+				aTree.sortPostOrder();
 				this.trees.add(aTree);
 			}
 		});
+
+		this.aForestImageCreator = new ForestImageCreator();
+		this.aForestImageCreator.setTrees(this.getTrees());
 	}
 
 	/**
@@ -47,9 +65,13 @@ public class ForestModel extends Model {
 		aNodeList.forEach((aNode) -> {
 			if (aNode.isRoot()) {
 				Tree<NodeData> aTree = new Tree<NodeData>(aNode);
+				aTree.sortPostOrder();
 				this.trees.add(aTree);
 			}
 		});
+
+		this.aForestImageCreator = new ForestImageCreator();
+		this.aForestImageCreator.setTrees(this.getTrees());
 	}
 
 	/**
@@ -58,6 +80,45 @@ public class ForestModel extends Model {
 	 */
 	public List<Tree<NodeData>> getTrees() {
 		return this.trees;
+	}
+
+	/**
+	 * 指定されたポイントにノードがあればその名前を返す
+	 * @param aPoint ポイント
+	 * @return 木のリスト
+	 */
+	public String getNodeName(Point aPoint) {
+		String nodeName = "";
+		Iterator<Node<NodeData>> aNodeIterator = this.nodePoints.keySet().iterator();
+		while (aNodeIterator.hasNext()) {
+			Node<NodeData> aNode = aNodeIterator.next();
+			Point startPoint = this.nodePoints.get(aNode).get(0);
+			Point endPoint = this.nodePoints.get(aNode).get(1);
+			if ((int)aPoint.getX() > (int)startPoint.getX() &&
+				(int)aPoint.getX() < (int)endPoint.getX() &&
+				(int)aPoint.getY() > (int)startPoint.getY() &&
+				(int)aPoint.getY() < (int)endPoint.getY()) {
+					nodeName = aNode.getData().get().getName();
+			}
+		}
+		return nodeName;
+	}
+
+	/**
+	 * アニメーションを実行する
+	 */
+	public void animate() {
+		while (this.aForestImageCreator.hasNext()) {
+			try {
+				this.picture(this.aForestImageCreator.next());
+				this.nodePoints = this.aForestImageCreator.getNodePoints();
+				this.changed();
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException anException) {
+				System.err.println(anException);
+				throw new RuntimeException(anException.toString());
+			}
+		}
 	}
 
 }

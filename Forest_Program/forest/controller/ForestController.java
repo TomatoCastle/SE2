@@ -1,8 +1,12 @@
 package forest.controller;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 import mvc.Controller;
+
+import forest.model.ForestModel;
+import forest.view.ForestView;
 
 /**
  * ForestのControllerを表すクラス
@@ -21,7 +25,10 @@ public class ForestController extends Controller {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent aMouseEvent) {
-		super.mouseClicked(aMouseEvent);
+		Point aPoint = aMouseEvent.getPoint();
+		aPoint.translate(view.scrollAmount().x, view.scrollAmount().y);
+		String nodeName = ((ForestModel)this.model).getNodeName(aPoint);
+		System.out.println(String.format("%s (%s)", aPoint, nodeName));
 	}
 
 	/**
