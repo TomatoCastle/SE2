@@ -145,12 +145,13 @@ public class Tree<Element extends Object & Comparable<? super Element>> extends 
 	 */
 	@Override
 	public boolean equals(Object object) {
-		if (this == object)
+		if (this == object) {
 			return true;
-		if (!(object instanceof Tree))
-			return false;
-			Tree otherTree = (Tree) object;
-		return this.hashCode() == otherTree.hashCode();
+		}
+		if (object instanceof Tree<?>) {
+			return this.hashCode() == object.hashCode();
+		}
+		return false;
 	}
 
 	/**
