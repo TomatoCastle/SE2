@@ -22,13 +22,4 @@ public class ForestView extends View {
 		super(model, controller);
 	}
 
-	/**
-	 * 指定されたグラフィックにForestの画像を出力する
-	 * @param aGraphics グラフィックス・コンテキスト
-	 */
-	@Override
-	public void paintComponent(Graphics aGraphics) {
-		super.paintComponent(aGraphics);
-	}
-
 }

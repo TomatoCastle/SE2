@@ -28,12 +28,4 @@ public class ForestController extends Controller {
 		System.out.println(String.format("%s (%s)", aPoint, nodeName));
 	}
 
-	/**
-	 * マウスのドラッグイベントを取得し、処理する
-	 */
-	@Override
-	public void mouseDragged(MouseEvent aMouseEvent) {
-		super.mouseDragged(aMouseEvent);
-	}
-
 }
