@@ -148,7 +148,9 @@ public class ForestImageCreator {
 		Iterator<Iterator<Node<NodeData>>> aIterator = this.nodeListIterators.iterator();
 		while (aIterator.hasNext()) {
 			Iterator<Node<NodeData>> aNodeIterator = aIterator.next();
-			return aNodeIterator.hasNext();
+			if (aNodeIterator.hasNext()) {
+				return Boolean.TRUE;
+			}
 		}
 		return Boolean.FALSE;
 	}
