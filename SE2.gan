@@ -43,10 +43,7 @@
             <depend id="14" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="11" name="提出〆切" color="#8cb6ce" meeting="false" start="2018-07-29" duration="3" complete="0" thirdDate="2018-07-29" thirdDate-constraint="0" expand="true"/>
-        <task id="14" name="コーディング" color="#8cb6ce" meeting="false" start="2018-06-21" duration="21" complete="0" thirdDate="2018-06-21" thirdDate-constraint="0" expand="true">
-            <depend id="48" type="1" difference="0" hardness="Rubber"/>
-        </task>
-        <task id="48" name="テスト工程" color="#8cb6ce" meeting="false" start="2018-06-24" duration="23" complete="0" thirdDate="2018-06-24" thirdDate-constraint="0" expand="true"/>
+        <task id="14" name="コーディング" color="#8cb6ce" meeting="false" start="2018-06-21" duration="41" complete="0" thirdDate="2018-06-21" thirdDate-constraint="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
