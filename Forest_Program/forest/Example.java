@@ -1,9 +1,16 @@
 package forest;
 
+import java.io.File;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.io.File;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
+
+import forest.mvc.ForestModel;
+import forest.mvc.ForestView;
+import forest.mvc.ForestController;
+import forest.utility.FileSelector;
 
 /**
  * 樹状整列の例題クラス：使い方の典型を示すのが目的のプログラムです。<br>
@@ -23,40 +30,45 @@ public class Example extends Object
 	 */
 	public static void main(String[] arguments)
 	{
+		File aFile;
 		// 引数が無い（樹状整列データファイルの在り処がわからない）をチェックする。
 		if (arguments.length < 1)
 		{
-			System.err.println("There are too few arguments.");
-			System.exit(1);
+			System.err.println("You need to select a file.");
+			FileSelector aFileSelector = new FileSelector();
+			aFile = aFileSelector.selectFile();
+			// System.exit(1);
+		} else {
+			aFile = new File(arguments[0]);
 		}
 
-		// 第1引数で指定された樹状整列データファイルの存在をチェックする。
-		File aFile = new File(arguments[0]);
+		// 指定された樹状整列データファイルの存在をチェックする。
 		if (!(aFile.exists()))
 		{
 			System.err.println("'" + aFile + "' does not exist.");
 			System.exit(1);
 		}
 
-		/**********
-
-		 // MVCを作成する。
+		// MVCを作成する。
 		ForestModel aModel = new ForestModel(aFile);
-		ForestView aView = new ForestView(aModel);
+		ForestController aController = new ForestController();
+		aController.setModel(aModel);
+		ForestView aView = new ForestView(aModel, aController);
 
-		// ウィンドウを生成して開く。
-		JFrame aWindow = new JFrame(aFile.getName());
+		JFrame aWindow = new JFrame("Forest");
 		aWindow.getContentPane().add(aView);
-		aWindow.setMinimumSize(new Dimension(400, 300));
+		Dimension aDimension = new Dimension(Const.WINDOW_WIDTH, Const.WINDOW_HEIGHT);
+		aWindow.setMinimumSize(aDimension);
+		aWindow.setMaximumSize(aDimension);
+		aWindow.setResizable(false);
 		aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		aWindow.setSize(800, 600);
-		aWindow.setLocationRelativeTo(null);
+		aWindow.addNotify();
+		Integer titleBarHeight = aWindow.getInsets().top;
+		aWindow.setSize(aDimension.width, aDimension.height + titleBarHeight);
+		aWindow.setLocation(50, 50);
 		aWindow.setVisible(true);
-
-		// 樹状整列のアニメーションを行う。
+		aWindow.toFront();
 		aModel.animate();
-
-		**********/
 
 		return;
 	}
